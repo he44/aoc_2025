@@ -1,0 +1,74 @@
+# -------------------------
+# macOS system files
+# -------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+
+# -------------------------
+# Python bytecode
+# -------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+
+# -------------------------
+# Virtual environments
+# -------------------------
+venv/
+env/
+.venv/
+.env/
+
+# -------------------------
+# Package / build artifacts
+# -------------------------
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# -------------------------
+# PyInstaller
+# -------------------------
+*.manifest
+*.spec
+
+# -------------------------
+# Unit test / coverage
+# -------------------------
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.cache/
+
+# -------------------------
+# Jupyter / IPython
+# -------------------------
+.ipynb_checkpoints/
+profile_default/
+ipython_config.py
+
+# -------------------------
+# Tools / dependency managers
+# -------------------------
+Pipfile.lock
+poetry.lock
+poetry.toml
+poetry.toml.lock
+
+# -------------------------
+# Logs
+# -------------------------
+*.log
+
+# -------------------------
+# Local settings / secrets
+# -------------------------
+.env.local
+.env.*
+settings_local.py
