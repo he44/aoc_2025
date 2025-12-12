@@ -53,7 +53,5 @@ def main():
     print(f"Total: {ans}")
 
 
-
 if __name__ == "__main__":
     main()
-

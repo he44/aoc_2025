@@ -4,6 +4,7 @@ import sys
 from typing import List, Optional
 from dataclasses import dataclass
 
+
 @dataclass
 class JunctionBox:
     x: int
@@ -18,11 +19,7 @@ class JunctionBox:
 
 
 def compute_distance(p1: JunctionBox, p2: JunctionBox):
-    return math.sqrt(
-        (p1.x - p2.x) ** 2 + 
-        (p1.y - p2.y) ** 2 + 
-        (p1.z - p2.z) ** 2
-    )
+    return math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2 + (p1.z - p2.z) ** 2)
 
 
 def main():
@@ -56,7 +53,9 @@ def main():
     to_connect = heapq.nlargest(num_connections, sorted_pairs_by_dist)
     for dist, start_id, end_id in to_connect:
         dist = -dist
-        print(f"Trying to connect {points[start_id]} and {points[end_id]} with distance {dist}.")
+        print(
+            f"Trying to connect {points[start_id]} and {points[end_id]} with distance {dist}."
+        )
         start_circuit_lead = points[start_id].group_lead_id
         end_circut_lead = points[end_id].group_lead_id
         if start_circuit_lead == end_circut_lead:
@@ -93,7 +92,7 @@ def main():
         # Python is min heap.
         print(len(point.child_ids))
         heapq.heappush(top_3_circuits_size, len(point.child_ids))
-        if (len(top_3_circuits_size) == 4):
+        if len(top_3_circuits_size) == 4:
             heapq.heappop(top_3_circuits_size)
     print(top_3_circuits_size)
     ans = 1
@@ -102,7 +101,5 @@ def main():
     print(ans)
 
 
-
 if __name__ == "__main__":
     main()
-

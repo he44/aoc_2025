@@ -1,5 +1,6 @@
 import sys
-from typing import Optional, List 
+from typing import Optional, List
+
 #
 # # Odd number of digits -> None
 # # We now have way more patterns.
@@ -87,6 +88,7 @@ from typing import Optional, List
 #
 #
 
+
 def is_invalid_pattern(num: int) -> bool:
     str_num = str(num)
     n = len(str_num)
@@ -99,13 +101,13 @@ def is_invalid_pattern(num: int) -> bool:
         repeating_part = str_num[:t]
         seen_invalid = False
         for i in range(1, num_parts):
-            next_part = str_num[i * t:(i + 1) * t]
+            next_part = str_num[i * t : (i + 1) * t]
             if next_part != repeating_part:
                 seen_invalid = True
                 break
         if not seen_invalid:
             # t is good
-            print(num, n , t)
+            print(num, n, t)
             return True
     return False
 
@@ -125,6 +127,7 @@ def main():
             if is_invalid_pattern(num):
                 ans += num
     print(ans)
+
 
 if __name__ == "__main__":
     main()

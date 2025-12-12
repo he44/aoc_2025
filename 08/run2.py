@@ -4,6 +4,7 @@ import sys
 from typing import List, Optional
 from dataclasses import dataclass
 
+
 @dataclass
 class JunctionBox:
     x: int
@@ -18,11 +19,7 @@ class JunctionBox:
 
 
 def compute_distance(p1: JunctionBox, p2: JunctionBox):
-    return math.sqrt(
-        (p1.x - p2.x) ** 2 + 
-        (p1.y - p2.y) ** 2 + 
-        (p1.z - p2.z) ** 2
-    )
+    return math.sqrt((p1.x - p2.x) ** 2 + (p1.y - p2.y) ** 2 + (p1.z - p2.z) ** 2)
 
 
 def main():
@@ -82,7 +79,9 @@ def main():
             _merge(end_circut_lead, start_circuit_lead)
 
         # print(f"Connected {points[start_circuit_lead]} and {points[end_circut_lead]} with distance {dist}.")
-        if len(start_box.child_ids) == len(points) or len(end_box.child_ids) == len(points):
+        if len(start_box.child_ids) == len(points) or len(end_box.child_ids) == len(
+            points
+        ):
             print(f"Done connecting {len(points)} points!")
             print(f"Last two groups connected: {start_box}, {end_box}")
             print(f"Last two junction points: {points[start_id]}, {points[end_id]}")
@@ -92,4 +91,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

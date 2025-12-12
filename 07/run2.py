@@ -7,10 +7,13 @@ from functools import cache
 
 
 @cache
-def _mutate_state(prev: str, r: int, c: int, height: int, width: int, new_char: str) -> str:
+def _mutate_state(
+    prev: str, r: int, c: int, height: int, width: int, new_char: str
+) -> str:
     list_chars = list(prev)
     list_chars[r * width + c] = new_char
     return "".join(list_chars)
+
 
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
@@ -36,10 +39,9 @@ def main():
 
     assert entry_col is not None
 
-
     # Let's use row-major-order and flatten out the list into string so that
     # we can properly cache this.
-    init_state_str = ''.join([x for line in init_state for x in line])
+    init_state_str = "".join([x for line in init_state for x in line])
     print(init_state_str)
 
     # All unique multi-verse if we start at r, c, with state
@@ -75,7 +77,6 @@ def main():
     print(len(all_unique_states))
 
 
-
 def test():
     contents = r"""...S......|..."""
 
@@ -88,7 +89,7 @@ def test():
     print(reverted_state)
     assert contents == reverted_state
 
+
 if __name__ == "__main__":
     # test()
     main()
-

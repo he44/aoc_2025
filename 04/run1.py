@@ -11,10 +11,15 @@ def main():
 
     def _count_paper_in_neighbor(r: int, c: int) -> int:
         num_paper = 0
-        for (dr, dc) in (
-            (-1, -1), (-1, 0), (-1, 1),
-            (0, -1), (0, 1),
-            (1, -1), (1, 0), (1, 1),
+        for dr, dc in (
+            (-1, -1),
+            (-1, 0),
+            (-1, 1),
+            (0, -1),
+            (0, 1),
+            (1, -1),
+            (1, 0),
+            (1, 1),
         ):
             nr, nc = r + dr, c + dc
             if 0 <= nr < height and 0 <= nc < width and contents[nr][nc] == "@":
@@ -28,7 +33,7 @@ def main():
         for c in range(width):
             if contents[r][c] == "@":
                 neighbor_count[r][c] = _count_paper_in_neighbor(r, c)
-                if (neighbor_count[r][c] < 4):
+                if neighbor_count[r][c] < 4:
                     to_remove.add((r, c))
             else:
                 neighbor_count[r][c] = None
@@ -41,13 +46,18 @@ def main():
         # their neighbor will decrease by 1. This opens up potentially new
         # ones to remove
         next_round_to_remove = set()
-        for (r, c) in to_remove:
+        for r, c in to_remove:
             num_removed += 1
             neighbor_count[r][c] = None
-            for (dr, dc) in (
-                (-1, -1), (-1, 0), (-1, 1),
-                (0, -1), (0, 1),
-                (1, -1), (1, 0), (1, 1),
+            for dr, dc in (
+                (-1, -1),
+                (-1, 0),
+                (-1, 1),
+                (0, -1),
+                (0, 1),
+                (1, -1),
+                (1, 0),
+                (1, 1),
             ):
                 nr, nc = r + dr, c + dc
                 # Out of bounds.
@@ -61,7 +71,7 @@ def main():
                     neighbor_count[nr][nc] -= 1
                     if neighbor_count[nr][nc] < 4:
                         next_round_to_remove.add((nr, nc))
-        to_remove = next_round_to_remove 
+        to_remove = next_round_to_remove
         # print(sorted(list(to_remove)))
         # print("\n".join(["".join([str(i) if i is not None else "." for i in line]) for line in neighbor_count]))
     print(f"Part 2: {num_removed}")

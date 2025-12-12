@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
     input_file = sys.argv[1]
@@ -22,10 +23,11 @@ def main():
                 code += 1
         else:
             code += 1
-        state += (dir * dist)
+        state += dir * dist
         state %= 100
         print(f"After {line} at {state}, collected {code}")
     print(f"Code is {code}")
+
 
 if __name__ == "__main__":
     main()

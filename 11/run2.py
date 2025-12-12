@@ -1,6 +1,7 @@
 import sys
 from functools import cache
 
+
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
     input_file = sys.argv[1]
@@ -33,7 +34,6 @@ def main():
     print(f"Can reach dac: {len(reachable)}")
     print(reachable)
 
-
     stack = ["fft"]
     reachable2 = set(stack)
     while stack:
@@ -55,10 +55,8 @@ def main():
         print("Cannot go hit both dac / fft from svr")
         return
 
-
     print("dac can reach fft?", "dac" in reachable2)
     print("fft can reach dac?", "fft" in reachable)
-
 
     # For my case, it's only possible to do svr -> fft -> dac -> out
     # Maybe I can count paths in each segment and multiply them together

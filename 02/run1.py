@@ -1,6 +1,7 @@
 import sys
 from typing import Optional
 
+
 # Odd number of digits -> None
 # Even number of digits (2 * n) -> 10 ** n + 1
 # E.g. 1212 = 101 * 12, 234234 = 1001 * 234
@@ -19,7 +20,7 @@ def get_sum_of_all_invalid_ids_with_length_n(num_digits: int) -> int:
         return 0
     pattern = get_invalid_pattern(num_digits)
     minimal = 10 ** (n - 1)
-    maximal = 10 ** n - 1
+    maximal = 10**n - 1
     # min = 1000, max = 9999,
     # Loop i from 10 (1010), to 99 (right bound needs to be last + 1)
     sum = 0
@@ -27,7 +28,10 @@ def get_sum_of_all_invalid_ids_with_length_n(num_digits: int) -> int:
         sum += i * pattern
     return sum
 
-def get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(left: int, right: int) -> int:
+
+def get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(
+    left: int, right: int
+) -> int:
     assert len(str(left)) == len(str(right)), f"{left} v.s. {right}"
     num_digits = len(str(left))
     pattern = get_invalid_pattern(num_digits)
@@ -39,22 +43,27 @@ def get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(left: int, right
             sum += i * pattern
     return sum
 
+
 def get_sum_of_invalid_ids(left: int, right: int) -> int:
     num_digits_low = get_num_digits(left)
     num_digits_high = get_num_digits(right)
     sum = 0
     # Simple case
-    if (num_digits_low == num_digits_high):
+    if num_digits_low == num_digits_high:
         return get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(left, right)
 
     # Complex case
     # Summing over all from `left` to 10 ** (num_digits_low + 1) - 1
-    sum += get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(left, 10 ** num_digits_low  - 1)
+    sum += get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(
+        left, 10**num_digits_low - 1
+    )
     # Summing over all in between
     for n in range(num_digits_low + 1, num_digits_high):
         sum += get_sum_of_all_invalid_ids_with_length_n(n)
     # Summin gover all from 10 ** (num_digits_high - 1) to `right`
-    sum += get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(10 ** (num_digits_high - 1), right)
+    sum += get_sum_of_all_invalid_ids_between_2_numbers_of_same_length(
+        10 ** (num_digits_high - 1), right
+    )
     return sum
 
 
@@ -70,6 +79,7 @@ def main():
         right = int(right)
         ans += get_sum_of_invalid_ids(left, right)
     print(ans)
+
 
 if __name__ == "__main__":
     main()

@@ -5,6 +5,7 @@ from dataclasses import dataclass
 # Quite challenging for me.
 # https://www.reddit.com/r/adventofcode/comments/1phywvn/comment/nt2rxav/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 
+
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
     input_file = sys.argv[1]
@@ -18,7 +19,7 @@ def main():
         c, r = content.strip().split(",")
         c = int(c)
         r = int(r)
-        # Update boundaries 
+        # Update boundaries
         if points:
             if points[-1][0] == r:
                 row_bounds.append((points[-1], (r, c)))
@@ -43,9 +44,8 @@ def main():
     for i in range(n):
         for j in range(i + 1, n):
             # Need to add 1 on the sides because it's inclusive.
-            cur_area = (
-                (abs(points[i][0] - points[j][0]) + 1)*
-                (abs(points[i][1] - points[j][1]) + 1)
+            cur_area = (abs(points[i][0] - points[j][0]) + 1) * (
+                abs(points[i][1] - points[j][1]) + 1
             )
             # Examine whether this rectangle gets crossed by boundaries
             min_r = min(points[i][0], points[j][0])
@@ -100,8 +100,5 @@ def main():
     print(max_area)
 
 
-
-
 if __name__ == "__main__":
     main()
-

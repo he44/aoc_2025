@@ -20,10 +20,10 @@ def main():
     ans = 0
     for left, right in ranges:
         if left > max_right:
-            ans += (right - left + 1)
+            ans += right - left + 1
             max_right = right
         elif right > max_right:
-            ans += (right - max_right)
+            ans += right - max_right
             max_right = right
         print(left, right, ans)
     print(ans)
@@ -31,4 +31,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

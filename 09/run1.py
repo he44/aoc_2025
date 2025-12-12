@@ -70,14 +70,10 @@ def main():
         for j in range(i + 1, n):
             print(i, j)
             # Need to add 1 on the sides because it's inclusive.
-            cur_area = (
-                (abs(points[i][0] - points[j][0]) + 1)*
-                (abs(points[i][1] - points[j][1]) + 1)
+            cur_area = (abs(points[i][0] - points[j][0]) + 1) * (
+                abs(points[i][1] - points[j][1]) + 1
             )
-            max_area = max(
-                max_area,
-                cur_area
-            )
+            max_area = max(max_area, cur_area)
             if i == 1 and j == 5:
                 print("Here", cur_area)
     print(max_area)
@@ -85,4 +81,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

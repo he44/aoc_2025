@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
     input_file = sys.argv[1]
@@ -32,7 +33,6 @@ def main():
     print(f"Can reach dac: {len(reachable)}")
     print(reachable)
 
-
     stack = ["fft"]
     reachable2 = set(stack)
     while stack:
@@ -57,12 +57,15 @@ def main():
     num_total_paths = 0
     num_problem_paths = 0
     seen = set()
-    def _dfs(cur_node: str, cur_path: list[str], seen_dac: bool, seen_fft: bool) -> None:
+
+    def _dfs(
+        cur_node: str, cur_path: list[str], seen_dac: bool, seen_fft: bool
+    ) -> None:
         print(cur_node, cur_path)
         nonlocal num_total_paths, num_problem_paths
         if cur_node == "out":
             num_total_paths += 1
-            if (seen_dac and seen_fft):
+            if seen_dac and seen_fft:
                 num_problem_paths += 1
             return
         if cur_node not in graph:
@@ -70,7 +73,7 @@ def main():
         for next_node in graph[cur_node]:
             if next_node == "out":
                 num_total_paths += 1
-                if (seen_dac and seen_fft):
+                if seen_dac and seen_fft:
                     num_problem_paths += 1
                 continue
             if next_node in seen:

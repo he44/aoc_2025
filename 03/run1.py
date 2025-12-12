@@ -14,8 +14,8 @@ def main():
         # ml[0] is -inf, ml[n] is the max in all
         # mr[i] is the largest value in line[i:]
         # mr[0] is the max in all, mr[n] is inf
-        max_on_left = [float("-inf") for _ in range(n  + 1)]
-        max_on_right = [float("-inf") for _ in range(n  + 1)]
+        max_on_left = [float("-inf") for _ in range(n + 1)]
+        max_on_right = [float("-inf") for _ in range(n + 1)]
         for i in range(1, n + 1):
             max_on_left[i] = max(max_on_left[i - 1], int(line[i - 1]))
         for i in range(n - 1, -1, -1):
@@ -31,6 +31,7 @@ def main():
         # print("-----")
         ans += max_joltage
     print(ans)
+
 
 if __name__ == "__main__":
     main()

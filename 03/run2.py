@@ -3,8 +3,6 @@ from typing import Optional
 from functools import cache
 
 
-
-
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
     input_file = sys.argv[1]
@@ -14,6 +12,7 @@ def main():
         line = content.strip()
         n = len(line)
         k = 12
+
         # dp[i][j] denote the maximum number we can generate
         # with strings in line[i:] with j digits. So the final answer will be dp[0][12]
         # Unbounded DP
@@ -36,13 +35,17 @@ def main():
             max_num_so_far = int(line[start_index])
             max_joltage = float("-inf")
             for i in range(start_index + 1, n):
-                max_joltage = max(max_num_so_far * (10 ** (length - 1))
-                    + _dp(i, length - 1, line), max_joltage)
+                max_joltage = max(
+                    max_num_so_far * (10 ** (length - 1)) + _dp(i, length - 1, line),
+                    max_joltage,
+                )
                 max_num_so_far = max(int(line[i]), max_num_so_far)
             return max_joltage
+
         max_j = _dp(0, k, line)
         ans += max_j
     print(ans)
+
 
 if __name__ == "__main__":
     main()

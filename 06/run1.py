@@ -21,7 +21,7 @@ def main():
 
     height = len(rows_of_numbers)
     width = len(ops)
-    ans = [1 if ops[i] == "*" else 0 for i in range(width) ]
+    ans = [1 if ops[i] == "*" else 0 for i in range(width)]
     for r in range(height):
         for c in range(width):
             if ops[c] == "*":
@@ -33,4 +33,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

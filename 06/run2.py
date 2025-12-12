@@ -32,7 +32,9 @@ def main():
                 if c - block_start_c >= len(operands):
                     operands.append(int(rows[r][c]))
                 else:
-                    operands[c - block_start_c] = operands[c - block_start_c] * 10 + int(rows[r][c])
+                    operands[c - block_start_c] = operands[
+                        c - block_start_c
+                    ] * 10 + int(rows[r][c])
                 # print(rows[r][c], operands[r])
                 all_empty_string = False
         # If we reach a column without any number or if we reached end,
@@ -55,7 +57,5 @@ def main():
     print(ans)
 
 
-
 if __name__ == "__main__":
     main()
-

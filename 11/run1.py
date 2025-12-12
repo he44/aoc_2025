@@ -1,5 +1,6 @@
 import sys
 
+
 def main():
     assert len(sys.argv) == 2, f"Unable to parse args {sys.argv}"
     input_file = sys.argv[1]
@@ -12,6 +13,7 @@ def main():
         graph[src] = dst_nodes
 
     num_solutions = 0
+
     def _dfs(cur_node: str, cur_path: list[str]) -> None:
         nonlocal num_solutions
         if cur_node == "out":
@@ -25,7 +27,6 @@ def main():
 
     _dfs("you", ["you"])
     print(num_solutions)
-
 
 
 if __name__ == "__main__":
